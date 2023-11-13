@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Games_Data
 
 # Create your views here.
 
 
 def home(request):
-    return HttpResponse("<h1>Papas cocidas</h1>")
+    game = Games_Data.objects.all()
+    return render(request, "home.html", {"game": game})
