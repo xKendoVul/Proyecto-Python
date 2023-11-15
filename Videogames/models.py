@@ -27,7 +27,7 @@ class Games_Data(models.Model):
     genre = models.ManyToManyField(Genres)
     platforms = models.ManyToManyField(Platforms)
     votes = models.IntegerField(default=0)
-    game_time = models.TimeField()
+    game_time = models.CharField(max_length=10)
 
     def __str__(self):
         return self.title

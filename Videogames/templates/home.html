@@ -4,30 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .row>.col, .bd-example-row .row[class^="col-"]{
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: black rgba(39,41,43,0.03);
+            border: 1px solid black rgba(39,41,43,0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>La Virgo Cueva</h1>
-
-    {% for games in game %}
-
-        <div>
-            <img src="{{games.port_image.url}}" alt="JAJA XD" style="height: 350px;">
-            <h2>{{games.title}}</h2>
-            <p>{{games.description}}</p>
-            <p><strong>Generos</strong></p>
-            {% for genres in games.genre.all %}
-                <p>{{genres.genre}}</p>
-            {% endfor %}
-            <p><strong>Fecha de Lanzamiento</strong></p>
-            <p>{{games.date_sale}}</p>
-            <p><strong>Plataformas</strong></p>
-            {% for genres in games.platforms.all %}
-                <p>{{genres.platforms}}</p>
-            {% endfor %}
-
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">La Virgo Cueva</div> 
+            <div class="col">Home</div> 
+            <div class="col">Novedades</div> 
+            <div class="col">Categoria</div>
+            <div class="col">Buscar</div>
         </div>
 
-    {% endfor %}
+    </div>
 
+    <div>
+    
+        {% for games in game %}
+        
+            <div>
+                <a href="{% url 'detalles_juegos' games.id %}">
+                    <img src="{{games.port_image.url}}" alt="JAJA XD" style="height: 220px;">
+                </a>
+                
+                <hr>
+
+            </div>
+
+        {% endfor %}
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 </html>

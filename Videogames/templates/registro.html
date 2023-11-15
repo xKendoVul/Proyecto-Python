@@ -1,0 +1,9 @@
+<h1>identifiquese</h1>
+{{error}}
+<form action="/registro/" method="POST"   >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        registrar
+    </button>
+</form>

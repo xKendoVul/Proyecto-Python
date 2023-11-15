@@ -1,0 +1,17 @@
+<img src="{{juego.port_image.url}}" alt="JAJA XD" style="height: 200px;">
+<h1>{{ juego.title }}</h1>
+<p>{{ juego.description }}</p>
+<p><strong>Fecha de Lanzamiento</strong></p>
+<p>{{juego.date_sale}}</p>
+<p><strong>Generos</strong></p>
+{% for genres in juego.genre.all %}
+    <li>{{genres.genre}}</li>
+{% endfor %}
+<p><strong>Plataformas</strong></p>
+{% for platforms in juego.platforms.all %}
+    <li>{{platforms.platform}}</li>
+{% endfor %}
+<p>Votos: {{ juego.votes }}</p>
+<a href="{% url 'home' %}">Volver al Home</a>
+<a href="{% url 'votar_positivo' juego.id %}">Voto a Favor</a>
+<a href="{% url 'votar_negativo' juego.id %}">Votar en Contra</a>

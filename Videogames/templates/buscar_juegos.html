@@ -1,0 +1,21 @@
+<form action="{% url 'buscar_juegos' %}" method="GET">
+    <input type="text" name="q" value="{{ query }}" placeholder="Buscar juegos...">
+    <button type="submit">Buscar</button>
+</form>
+
+<a href="{% url 'bienvenida' %}">Volver al Home</a>
+
+{% if juegos %}
+    <h2>Resultados para '{{ query }}':</h2>
+    <ul>
+    {% for juego in juegos %}
+        <li>{{ juego.title }}</li>
+        <a href="{% url 'detalles_juegos' juego.id %}">
+            <img src="{{juego.port_image.url}}" alt="JAJA XD" style="height: 220px;">
+        </a>
+        <!-- Mostrar otros detalles del juego si es necesario -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron juegos.</p>
+{% endif %}
