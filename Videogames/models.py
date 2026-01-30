@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 
 # Create your models here.
 
@@ -19,28 +18,15 @@ class Platforms(models.Model):
 
 
 class Games_Data(models.Model):
-    port_image = models.ImageField(upload_to="Videogames/images/games")
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=400)
-    date_sale = models.DateField()
+    release_date = models.DateField()
     genre = models.ManyToManyField(Genres)
     platforms = models.ManyToManyField(Platforms)
-    votes = models.IntegerField(default=0)
-    game_time = models.CharField(max_length=8)
+    votes = models.IntegerField(blank=True, null=True)
+
+    create_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
-
-
-class Users(models.Model):
-    email = models.CharField(max_length=150)
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    user_image = models.ImageField(upload_to="Videogames/images/users")
-
-
-class Comment(models.Model):
-    id_game = models.ForeignKey(Games_Data, on_delete=models.CASCADE)
-    id_user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    Comment_text = models.CharField(max_length=500)
-    date_published = models.DateTimeField()

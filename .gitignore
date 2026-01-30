@@ -1,0 +1,8 @@
+env/
+__pycache__/
+migrations/
+
+/staticfiles/
+/media/
+
+db_settings.py
