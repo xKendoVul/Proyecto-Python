@@ -4,3 +4,5 @@ migrations/
 
 /staticfiles/
 /media/
+
+db_settings.py
